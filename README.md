@@ -99,7 +99,7 @@ To further enhance the agent:
 
 ## ⚙️ 8. Detailed Workflow
 
-```mermaid
+```
 graph TD
     A[User Uploads CSV + Ad Text] --> B[Analyze CSV via GPT-4]
     B --> C[Retrieve Relevant Blog Posts (Chroma)]
