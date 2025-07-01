@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, Form
 from fastapi.responses import JSONResponse
-from app.agent_graph import final_graph
+from graph import final_graph
 import tempfile
 import shutil
 
@@ -26,5 +26,5 @@ async def run_agent(
         "platform": platform,
     }
 
-    result = final_graph.invoke(input_state)
+    result = final_graph.invoke(input_state, config={"configurable": {"thread_id": 1}})
     return JSONResponse(result)
