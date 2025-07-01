@@ -1,12 +1,12 @@
 from langgraph.graph import StateGraph, END
 from langchain_core.runnables import RunnableLambda
-from app.csv_analysis import analyze_csv
-from app.vector_search import vector_search
-from app.ad_rewriter import rewrite_ad_text
-from app.feedback_memory import feedback_memory
-from app.evaluation import evaluate_output
+from csv_analysis import analyze_csv
+from vector_search import vector_search
+from rewriter import rewrite_ad_text
+from langgraph.checkpoint.memory import InMemorySaver
 
 graph = StateGraph()
+checkpointer = InMemorySaver()
 
 graph.add_node("AnalyzeCSV", RunnableLambda(analyze_csv))
 graph.add_node("SearchBlogs", RunnableLambda(vector_search))
@@ -21,4 +21,4 @@ graph.add_edge("RewriteAd", "FeedbackMemory")
 graph.add_edge("FeedbackMemory", "Evaluate")
 graph.add_edge("Evaluate", END)
 
-final_graph = graph.compile()
+final_graph = graph.compile(checkpointer=checkpointer)
