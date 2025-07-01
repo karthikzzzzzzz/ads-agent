@@ -1,4 +1,3 @@
-# 📊 Ad Optimization Agent using LangGraph + FastAPI
 
 ## 🧠 Overview
 
@@ -111,6 +110,8 @@ graph TD
 ```
 
 ## How to run
+
+Load the env variables with the keys for the openai or use ollama models via ChatOpenAI
 
 pip install -r requirements.txt
 uvicorn app.main:app --reload
