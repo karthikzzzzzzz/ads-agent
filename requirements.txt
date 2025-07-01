@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pandas
+langchain
+langgraph
+openai
+chromadb
+rouge-score
